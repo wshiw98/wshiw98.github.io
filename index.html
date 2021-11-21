@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-21 22:18:31" itemprop="dateModified" datetime="2021-11-21T22:18:31+08:00">2021-11-21</time>
+                <time title="修改时间：2021-11-21 22:30:00" itemprop="dateModified" datetime="2021-11-21T22:30:00+08:00">2021-11-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,7 +250,8 @@
 <p>明天周一，上海又要降温了，好像真的要冬天了。</p>
 <p>就写到这里了，爸妈喊我去吃火锅了，也祝你周末愉快，嘻嘻。</p>
 <h1 id="附录——踩坑整理"><a href="#附录——踩坑整理" class="headerlink" title="附录——踩坑整理"></a>附录——踩坑整理</h1><h2 id="1-音乐的全局播放"><a href="#1-音乐的全局播放" class="headerlink" title="1.音乐的全局播放"></a>1.音乐的全局播放</h2><p>之前图方便，拉了个网易云外链建了播放器，可是实际用起来发现，在不同页面之间一切换，BGM就会自动重新播放，尬住了。说起来这个问题倒以前也不是没遇见过，仿佛梦回研一冬天搞安卓开发的时候，只不过当时犯过的毛病现在不妨碍我再犯一遍orz。犯归犯，改正才是好孩子！</p>
-<p>改的途中发现，直接用网易云插件是众多方法中唯一无法实现全局播放的，于是改用Aplayer+MetingJS插件（所以说gitclone到底还要outtime多少次啊！！！暴躁！！！<del>啊所以就几百k的代码用什么gitclone，npm一下算了</del>）<br>接着用pjax进行页面路由切换的管理，pjax主要是利用pushState来改变浏览器URL，利用ajax来请求页面，以实现不刷新浏览器更新页面，这样就能保证正在播放音乐中的播放器不受影响。</p>
+<p>改的途中发现，直接用网易云插件是众多方法中唯一无法实现全局播放的，于是改用Aplayer+MetingJS插件（所以说gitclone到底还要outtime多少次啊！！！暴躁！！！<del>啊所以就几百k的代码用什么gitclone，npm一下算了</del>）</p>
+<p>接着用pjax进行页面路由切换的管理，pjax主要是利用pushState来改变浏览器URL，利用ajax来请求页面，以实现不刷新浏览器更新页面，这样就能保证正在播放音乐中的播放器不受影响。</p>
 
       
     </div>

@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 14:22:01" itemprop="dateModified" datetime="2021-11-22T14:22:01+08:00">2021-11-22</time>
+                <time title="修改时间：2021-11-22 19:38:49" itemprop="dateModified" datetime="2021-11-22T19:38:49+08:00">2021-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,14 +269,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -324,12 +324,23 @@
 <h1 id="附录——踩坑整理"><a href="#附录——踩坑整理" class="headerlink" title="附录——踩坑整理"></a>附录——踩坑整理</h1><h2 id="音乐的全局播放"><a href="#音乐的全局播放" class="headerlink" title="音乐的全局播放"></a>音乐的全局播放</h2><p>之前图方便，拉了个网易云外链建了播放器，可是实际用起来发现，在不同页面之间一切换，BGM就会自动重新播放，尬住了。说起来这个问题倒以前也不是没遇见过，仿佛梦回研一冬天搞安卓开发的时候，只不过当时犯过的毛病现在不妨碍我再犯一遍orz。犯归犯，改正才是好孩子！</p>
 <p>改的途中发现，直接用网易云插件是众多方法中唯一无法实现全局播放的，于是改用Aplayer+MetingJS插件（所以说gitclone到底还要outtime多少次啊！！！暴躁！！！<del>啊所以就几百k的代码用什么gitclone，npm一下算了</del>）</p>
 <p>接着用pjax进行页面路由切换的管理，pjax主要是利用pushState来改变浏览器URL，利用ajax来请求页面，以实现不刷新浏览器更新页面，这样就能保证正在播放音乐中的播放器不受影响。</p>
-<h2 id="要了我命的空格"><a href="#要了我命的空格" class="headerlink" title="要了我命的空格"></a>要了我命的空格</h2><p>hexo g报错的时候，遇事不决先检查一下config文件里冒号后面有没有加空格！空格！空格！</p>
+<h2 id="空格！！！"><a href="#空格！！！" class="headerlink" title="空格！！！"></a>空格！！！</h2><p>hexo g报错的时候，遇事不决先检查一下config文件里冒号后面有没有加空格！空格！空格！</p>
 <p>哪怕是在第一行live2d:后面这种地方! （↓）</p>
 <blockquote>
 <p>live2d:<br> enable: true<br> pluginModelPath: assets/</p>
 </blockquote>
 <p>虽然是个小问题，但是一个不注意的时候真的很麻烦！</p>
+<h2 id="本地搜索功能"><a href="#本地搜索功能" class="headerlink" title="本地搜索功能"></a>本地搜索功能</h2><p>想着做一个本地搜索功能，万一（我是说万一）我以后更的博文多了呢对吧！就可以直接搜索就很方便！</p>
+<p>用的是Hexo的hexo-generator-searchdb插件，能够实现本地搜索功能，安装和配置步骤非常简单，在根目录执行一下<code>npm install hexo-generator-searchdb --save</code>，然后修改主题配置文件，把local_search标签的enable改成true，简单粗暴，好了！</p>
+<p>好了！好了？好了吗？？嗯？？仔细一看，在server上跑没事，deploy之后却发现搜索页面上一直有个圈圈在转，裂了。</p>
+<p>解决方案 → 将以下参数增加到Hexo主配置文件中：</p>
+<blockquote>
+<p>search:<br>path: search.xml  #在public目录的根目录下生成search.xml文件，用于存储网站文章的文字数据<br>field: post<br>format: html<br>limit: 10000</p>
+</blockquote>
+<p>这回是真好了！</p>
+<h2 id="评论模块显示问题"><a href="#评论模块显示问题" class="headerlink" title="评论模块显示问题"></a>评论模块显示问题</h2><p>评论模块用的是Leancloud，一开始添加模块倒是很简单，但是在各位朋友的帮助测试下（特别鸣谢：@某乾 @我大哥），发现了评论可以正常发送但不能正常显示的问题，某乾的评论成功发送后一刷新就不显示了，但是今早大哥发了一条却意外显示出来了。</p>
+<p>于是我反过头回我的Leancloud数据库中查看，各条数据都是完好没有丢失的，区别在于，同一篇博文，从首页点进去留下的评论，和从日志分类点进这篇博文发送的评论，数据区别在于url不同，从首页点进去的url值为空，从日志分类中点进去的url值为‘archives’，手动修改url值，搞定，可以显示。</p>
+<p>但目前这种方法治标不治本，有怀疑过是不是因为前文所说的pjax导致的路由切换问题，但是可惜我目前水平还不够，有没有什么治标又治本的方法，留待以后研究吧。（当然如果有好哥哥会的话请教教我！！）</p>
 
       
     </div>
@@ -595,7 +606,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">2 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

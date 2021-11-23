@@ -27,15 +27,24 @@
     var CONFIG = {"hostname":"wshiw98.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小狮子的部落格">
-<meta property="og:url" content="http://wshiw98.cn/tags/Hexo/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;用信号相关来确定阵列中天线间（FSC、CSC、和BA）信号相位和延迟偏移时，可用几种算法。如果来自各天线的SNR足够高，所有天线对都可进行很强的相关，无需特殊处理，直接利用从相关获得的相位和时间延迟偏移来对齐信号。 Simple算法&amp;emsp;&amp;emsp;指定L个单元的天线阵中的1个天线作为参考天线，通常是G&#x2F;T值最大的天线（G&#x2F;T→天线的增益除以系统温度）。来自其余（L-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相关算法">
+<meta property="og:url" content="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="小狮子的部落格">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;用信号相关来确定阵列中天线间（FSC、CSC、和BA）信号相位和延迟偏移时，可用几种算法。如果来自各天线的SNR足够高，所有天线对都可进行很强的相关，无需特殊处理，直接利用从相关获得的相位和时间延迟偏移来对齐信号。 Simple算法&amp;emsp;&amp;emsp;指定L个单元的天线阵中的1个天线作为参考天线，通常是G&#x2F;T值最大的天线（G&#x2F;T→天线的增益除以系统温度）。来自其余（L-">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/simple%E7%AE%97%E6%B3%95.jpg">
+<meta property="og:image" content="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/sumple%E7%AE%97%E6%B3%95.jpg">
+<meta property="article:published_time" content="2021-11-23T13:22:24.000Z">
+<meta property="article:modified_time" content="2021-11-23T13:26:22.038Z">
 <meta property="article:author" content="wshiw">
+<meta property="article:tag" content="深空网">
+<meta property="article:tag" content="天线组阵技术">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/simple%E7%AE%97%E6%B3%95.jpg">
 
-<link rel="canonical" href="http://wshiw98.cn/tags/Hexo/">
+<link rel="canonical" href="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -43,12 +52,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Hexo | 小狮子的部落格</title>
+  <title>相关算法 | 小狮子的部落格</title>
   
 
 
@@ -194,57 +203,157 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wshiw">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小狮子的部落格">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          相关算法
+        </h1>
+
+        <div class="post-meta">
+
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-23 21:22:24 / 修改时间：21:26:22" itemprop="dateCreated datePublished" datetime="2021-11-23T21:22:24+08:00">2021-11-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E7%A9%BA%E7%BD%91%E7%9A%84%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">深空网的天线组阵技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Hexo
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>735</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <p>&emsp;&emsp;用信号相关来确定阵列中天线间（FSC、CSC、和BA）信号相位和延迟偏移时，可用几种算法。如果来自各天线的SNR足够高，所有天线对都可进行很强的相关，无需特殊处理，直接利用从相关获得的相位和时间延迟偏移来对齐信号。</p>
+<h1 id="Simple算法"><a href="#Simple算法" class="headerlink" title="Simple算法"></a>Simple算法</h1><p>&emsp;&emsp;指定L个单元的天线阵中的1个天线作为参考天线，通常是G/T值最大的天线（G/T→天线的增益除以系统温度）。来自其余（L-1)个天线的各信号与来自参考天线的信号相关，产生（L-1）个复相关幅度（射频信号需要先下变频至中频IF或基带，需要乘一个复指数，因此是复相关）。用这些复幅度修正各个天线的信号，以使它们在相位和延迟上与参考天线的信号相关。最后将所产生的L个信号相加，提高SNR。相加时可以等权值相加，也可以加权，通常加权值的大小与输入信号电压除以其方差所得的值成比例。SNR提高的程度取决于修正后信号在相位上对齐的程度，修正相位精度的极限由获得相关幅度的可用平均时间确定（也就是相关运算时的积分长度）。</p>
+<p><img src="/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/simple%E7%AE%97%E6%B3%95.jpg" alt="simple算法"></p>
+<h1 id="Sumple算法"><a href="#Sumple算法" class="headerlink" title="Sumple算法"></a>Sumple算法</h1><p>&emsp;&emsp;Sumple算法是一种迭代方法，每个天线与由其他所有天线加权和组成的参考天线做互相关。每流转过L个天线中的一个，并与其余天线的复加权和进行相关就完成一次迭代。权值是以0相位单位矢量。每次迭代后，前一个权值被新的权值所代替，此过程重复进行。经过几次迭代（4和8之间）后该方法总是从随即状态收敛，主要因为所有天线（减去一个）的加权和接近一个恒定矢量。Sumple算法比起Simple算法，可以用于SNR更低的弱信号，且收敛速度更快，合成损失小，更适合硬件实现。但是Sumple算法在低SNR时需要注意相位漂移，单个天线失效以及对流层对其算法精度的影响。</p>
+<p><img src="/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/sumple%E7%AE%97%E6%B3%95.jpg" alt="sumple算法"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-11-20T23:15:13+08:00"
-              content="2021-11-20">
-          11-20
-        </time>
-      </div>
+    
+        
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/20/%E5%BB%BA%E7%AB%99%E5%BF%83%E5%BE%97/" itemprop="url">
-            <span itemprop="name">建站心得</span>
-          </a>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>wshiw
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wshiw98.cn/2021/11/23/%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" title="相关算法">http://wshiw98.cn/2021/11/23/相关算法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均建议不要转载。转载也行，转的时候装作不是我本人写的！
+  </li>
+</ul>
+</div>
 
-    </header>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E7%A9%BA%E7%BD%91/" rel="tag"># 深空网</a>
+              <a href="/tags/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E6%8A%80%E6%9C%AF/" rel="tag"># 天线组阵技术</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/22/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E6%A6%82%E8%BF%B0/" rel="prev" title="天线组阵概述">
+      <i class="fa fa-chevron-left"></i> 天线组阵概述
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -315,6 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Simple%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Simple算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sumple%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Sumple算法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

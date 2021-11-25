@@ -27,19 +27,22 @@
     var CONFIG = {"hostname":"wshiw98.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="今天没有博文，画了张流程图，已经要瞎了，具体的明天再更 之前准研一做的基于CUDA的宽带DDC和最近新做的天线组阵信号合成，这两个项目虽然都知道是接收端的东西，不过就是串不起来，但今天算是正式想通了一整套系统流程，有种打通任督二脉的感觉，有一点点升华了的感觉，好快乐！虽然每天都在我能毕业，我毕不了业，我能开题，这题我开不了之间反复横跳，但至少今天我又觉得我可以了！">
+  <meta name="description" content="今天没有博文，画了张流程图，已经要瞎了，具体的明天再更 之前准研一做的基于CUDA的宽带DDC和最近新做的天线组阵信号合成，这两个项目虽然都知道是接收端的东西，不过就是串不起来，但今天算是正式想通了一整套系统流程，有种打通任督二脉的感觉，有一点点升华了的感觉，好快乐！虽然每天都在我能毕业，我毕不了业，我能开题，这题我开不了之间反复横跳，但至少今天我又觉得我可以了！  宽带信号频域合成技术&amp;emsp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天线组阵宽带信号频域合成">
 <meta property="og:url" content="http://wshiw98.cn/2021/11/24/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7%E9%A2%91%E5%9F%9F%E5%90%88%E6%88%90/index.html">
 <meta property="og:site_name" content="小狮子的部落格">
-<meta property="og:description" content="今天没有博文，画了张流程图，已经要瞎了，具体的明天再更 之前准研一做的基于CUDA的宽带DDC和最近新做的天线组阵信号合成，这两个项目虽然都知道是接收端的东西，不过就是串不起来，但今天算是正式想通了一整套系统流程，有种打通任督二脉的感觉，有一点点升华了的感觉，好快乐！虽然每天都在我能毕业，我毕不了业，我能开题，这题我开不了之间反复横跳，但至少今天我又觉得我可以了！">
+<meta property="og:description" content="今天没有博文，画了张流程图，已经要瞎了，具体的明天再更 之前准研一做的基于CUDA的宽带DDC和最近新做的天线组阵信号合成，这两个项目虽然都知道是接收端的东西，不过就是串不起来，但今天算是正式想通了一整套系统流程，有种打通任督二脉的感觉，有一点点升华了的感觉，好快乐！虽然每天都在我能毕业，我毕不了业，我能开题，这题我开不了之间反复横跳，但至少今天我又觉得我可以了！  宽带信号频域合成技术&amp;emsp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wshiw98.cn/2021/11/24/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7%E9%A2%91%E5%9F%9F%E5%90%88%E6%88%90/%E7%BB%84%E9%98%B5%E7%BB%93%E6%9E%84.jpg">
 <meta property="article:published_time" content="2021-11-24T14:52:47.000Z">
-<meta property="article:modified_time" content="2021-11-24T15:02:08.898Z">
+<meta property="article:modified_time" content="2021-11-25T14:48:48.669Z">
 <meta property="article:author" content="wshiw">
 <meta property="article:tag" content="深空网">
 <meta property="article:tag" content="天线组阵技术">
+<meta property="article:tag" content="宽带信号">
+<meta property="article:tag" content="DDC">
+<meta property="article:tag" content="信号合成">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wshiw98.cn/2021/11/24/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7%E9%A2%91%E5%9F%9F%E5%90%88%E6%88%90/%E7%BB%84%E9%98%B5%E7%BB%93%E6%9E%84.jpg">
 
@@ -233,10 +236,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-24 22:52:47 / 修改时间：23:02:08" itemprop="dateCreated datePublished" datetime="2021-11-24T22:52:47+08:00">2021-11-24</time>
+              <time title="创建时间：2021-11-24 22:52:47" itemprop="dateCreated datePublished" datetime="2021-11-24T22:52:47+08:00">2021-11-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 22:48:48" itemprop="dateModified" datetime="2021-11-25T22:48:48+08:00">2021-11-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -274,7 +283,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>182</span>
+              <span>765</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -295,7 +304,13 @@
       
         <p>今天没有博文，画了张流程图，已经要瞎了，具体的明天再更</p>
 <p>之前准研一做的基于CUDA的宽带DDC和最近新做的天线组阵信号合成，这两个项目虽然都知道是接收端的东西，不过就是串不起来，但今天算是正式想通了一整套系统流程，有种打通任督二脉的感觉，有一点点升华了的感觉，好快乐！虽然每天都在我能毕业，我毕不了业，我能开题，这题我开不了之间反复横跳，但至少今天我又觉得我可以了！</p>
+<hr>
+<h1 id="宽带信号频域合成技术"><a href="#宽带信号频域合成技术" class="headerlink" title="宽带信号频域合成技术"></a>宽带信号频域合成技术</h1><p>&emsp;&emsp;频域波束形成的基本思想是对宽带信号进行数字信道化划分，得到低采样速率的子带信号，对每个子带进行数字波束形成，然后再对子带进行频域综合，重构成原始采样率的宽带信号。对多路天线合成，天线之间的粗时延可以通过调整原始采样时钟的方式来补偿，细时延通过对信道化后的每个子带内的信号进行相位加权来修正。（SUMPLE算法）</p>
+<p>&emsp;&emsp;下图为深空天线组阵系统的信号处理流程。</p>
 <p><img src="/2021/11/24/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7%E9%A2%91%E5%9F%9F%E5%90%88%E6%88%90/%E7%BB%84%E9%98%B5%E7%BB%93%E6%9E%84.jpg" alt="组阵结构"></p>
+ <span id="more"></span> 
+
+<p>&emsp;&emsp;核心部分采用频域波束形成方法。N个天线接收到的信号输入组阵系统，通过采样率为F的AD采样变为数字信号；经过可调整的数倍采样时钟延时链、DDC变为零中频复信号；分析模块通过多相滤波将宽带零中频信号划分为M个采样率为F/M频率子带；将每个天线对应的同频子带分别送到M个相关器，得到各个天线的M个子带的时延和相位信息，通过时延相位校准反馈环路对各天线进行时延和相位补偿。对校准后的N个天线的M个同频子带分别进行波束形成，得到M个合成的频率子带信号，然后经过综合模块将各个合成后的子带重构为一路原始频谱宽带零中频信号，再经过DUC通过DA将合成信号输出。由于深空通信和卫星通信均工作在射频段，因此在DDC和多相滤波模块需要处理的运算量巨大，若是想实时实现，对硬件和算法有极高的要求，这一部分，会另开一个DDC和信道化的分类专门单独写。</p>
 
     </div>
 
@@ -326,6 +341,9 @@
           <div class="post-tags">
               <a href="/tags/%E6%B7%B1%E7%A9%BA%E7%BD%91/" rel="tag"># 深空网</a>
               <a href="/tags/%E5%A4%A9%E7%BA%BF%E7%BB%84%E9%98%B5%E6%8A%80%E6%9C%AF/" rel="tag"># 天线组阵技术</a>
+              <a href="/tags/%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7/" rel="tag"># 宽带信号</a>
+              <a href="/tags/DDC/" rel="tag"># DDC</a>
+              <a href="/tags/%E4%BF%A1%E5%8F%B7%E5%90%88%E6%88%90/" rel="tag"># 信号合成</a>
           </div>
 
         
@@ -421,6 +439,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7%E9%A2%91%E5%9F%9F%E5%90%88%E6%88%90%E6%8A%80%E6%9C%AF"><span class="nav-number">1.</span> <span class="nav-text">宽带信号频域合成技术</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -449,7 +468,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -488,12 +507,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

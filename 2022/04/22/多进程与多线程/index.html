@@ -27,16 +27,16 @@
     var CONFIG = {"hostname":"wshiw98.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="#并发并发指在多个进程间进行切换e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常">
+  <meta name="description" content="并发并发指在多个进程间进行切换e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常慢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多进程与多线程">
 <meta property="og:url" content="http://wshiw98.cn/2022/04/22/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="小狮子的部落格">
-<meta property="og:description" content="#并发并发指在多个进程间进行切换e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常">
+<meta property="og:description" content="并发并发指在多个进程间进行切换e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常慢">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wshiw98.cn/2022/04/22/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C.jpg">
 <meta property="article:published_time" content="2022-04-22T14:58:13.000Z">
-<meta property="article:modified_time" content="2022-04-22T15:47:27.894Z">
+<meta property="article:modified_time" content="2022-04-22T16:08:44.648Z">
 <meta property="article:author" content="wshiw">
 <meta property="article:tag" content="多进程">
 <meta property="article:tag" content="多线程">
@@ -233,10 +233,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-22 22:58:13 / 修改时间：23:47:27" itemprop="dateCreated datePublished" datetime="2022-04-22T22:58:13+08:00">2022-04-22</time>
+              <time title="创建时间：2022-04-22 22:58:13" itemprop="dateCreated datePublished" datetime="2022-04-22T22:58:13+08:00">2022-04-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-23 00:08:44" itemprop="dateModified" datetime="2022-04-23T00:08:44+08:00">2022-04-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -274,7 +280,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>892</span>
+              <span>881</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,21 +299,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>#并发<br>并发指在多个进程间进行切换<br>e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常慢的，那么在这个时候，如果 CPU 傻傻的等硬盘返回数据的话，<br>那 CPU 的利⽤率是非常低的。所以，当进程要从硬盘读取数据时，CPU 不需要阻塞等待数据的返回，⽽是去执⾏另外的进程。当硬盘数据返回时，CPU 会收到个中断，于是 CPU 再继续运⾏这个进程。这种多个程序、交替执⾏的思想，就有 CPU 管理多个进程的初步想法。<br><img src="/2022/04/22/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C.jpg" alt="并发和并行"></p>
-<p>#PCB<br>在操作系统中，是⽤进程控制块（process control block，PCB）数据结构来描述进程的。PCB 是进程存在的唯⼀标识，这意味着⼀个进程的存在，必然会有⼀个 PCB，如果进程消失了，那么 PCB 也会随之消失。</p>
+        <h1 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h1><p>并发指在多个进程间进行切换<br>e.g. 我们编写的代码只是⼀个存储在硬盘的静态⽂件，通过编译后就会⽣成⼆进制可执⾏⽂件，当我们运⾏这个可执行⽂件后，它会被装载到内存中，接着 CPU 会执行程序中的每⼀条指令，那么这个运行中的程序， 就被称为「进程」（Process）。 现在我们考虑有⼀个会读取硬盘⽂件数据的程序被执⾏了，那么当运⾏到读取⽂件的指令时，就会去从硬盘读取数据，但是硬盘的读写速度是⾮常慢的，那么在这个时候，如果 CPU 傻傻的等硬盘返回数据的话，<br>那 CPU 的利⽤率是非常低的。所以，当进程要从硬盘读取数据时，CPU 不需要阻塞等待数据的返回，⽽是去执⾏另外的进程。当硬盘数据返回时，CPU 会收到个中断，于是 CPU 再继续运⾏这个进程。这种多个程序、交替执⾏的思想，就有 CPU 管理多个进程的初步想法。<br><img src="/2022/04/22/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C.jpg" alt="并发和并行"></p>
+<h1 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h1><p>在操作系统中，是⽤进程控制块（process control block，PCB）数据结构来描述进程的。PCB 是进程存在的唯⼀标识，这意味着⼀个进程的存在，必然会有⼀个 PCB，如果进程消失了，那么 PCB 也会随之消失。</p>
 <p>PCB具体包含什么信息？</p>
 <ol>
-<li><p>进程描述信息：<br>·进程标识符：标识各个进程，每个进程都有⼀个并且唯⼀的标识符；<br>·⽤户标识符：进程归属的⽤户，⽤户标识符主要为共享和保护服务；</p>
-</li>
-<li><p>进程控制和管理信息：<br>·进程当前状态，如 new、ready、running、waiting 或 blocked 等；<br>·进程优先级：进程抢占 CPU 时的优先级；</p>
-</li>
-<li><p>资源分配清单：<br>·有关内存地址空间或虚拟地址空间的信息，所打开⽂件的列表和所使⽤的 I/O 设备信息。</p>
-</li>
-<li><p>CPU 相关信息：<br>·CPU 中各个寄存器的值，当进程被切换时，CPU 的状态信息都会被保存在相应的 PCB 中，以便进程重新执行时，能从断点处继续执行。</p>
-</li>
+<li>进程描述信息： </li>
 </ol>
+<ul>
+<li>进程标识符：标识各个进程，每个进程都有⼀个并且唯⼀的标识符；</li>
+<li>⽤户标识符：进程归属的⽤户，⽤户标识符主要为共享和保护服务；</li>
+</ul>
+<ol start="2">
+<li>进程控制和管理信息：</li>
+</ol>
+<ul>
+<li>进程当前状态，如 new、ready、running、waiting 或 blocked 等；</li>
+<li>进程优先级：进程抢占 CPU 时的优先级；</li>
+</ul>
+<ol start="3">
+<li>资源分配清单：</li>
+</ol>
+<ul>
+<li>有关内存地址空间或虚拟地址空间的信息，所打开⽂件的列表和所使⽤的 I/O 设备信息。</li>
+</ul>
+<ol start="4">
+<li>CPU 相关信息：</li>
+</ol>
+<ul>
+<li>CPU 中各个寄存器的值，当进程被切换时，CPU 的状态信息都会被保存在相应的 PCB 中，以便进程重新执行时，能从断点处继续执行。</li>
+</ul>
 <p>PCB是如何组织的？</p>
-<p>通常是通过链表的⽅式进⾏组织，把具有相同状态的进程链在⼀起，组成各种队列。比如：<br>·将所有处于就绪状态的进程链在⼀起，称为就绪队列；<br>·把所有因等待某事件⽽处于等待状态的进程链在⼀起就组成各种阻塞队列；<br>·另外，对于运行队列在单核 CPU 系统中则只有⼀个运⾏指针了，因为单核 CPU 在某个时间，只能运行⼀个程序。</p>
+<p>通常是通过链表的⽅式进⾏组织，把具有相同状态的进程链在⼀起，组成各种队列。比如：</p>
+<ul>
+<li>将所有处于就绪状态的进程链在⼀起，称为就绪队列；</li>
+<li>把所有因等待某事件⽽处于等待状态的进程链在⼀起就组成各种阻塞队列；</li>
+<li>另外，对于运行队列在单核 CPU 系统中则只有⼀个运⾏指针了，因为单核 CPU 在某个时间，只能运行⼀个程序。</li>
+</ul>
 
     </div>
 
@@ -433,6 +460,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">并发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCB"><span class="nav-number">2.</span> <span class="nav-text">PCB</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
